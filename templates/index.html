@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Run Python Script</title>
-	<script src='{{url_for('static', filename='index.js')}}'></script>
+
+
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+
+    <script src='{{url_for('static', filename='index.js')}}'></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
 </head>
 <body>
     <button onclick="runPythonScript()">Run Python Script</button>
     <div id="output"></div>
     <form id="form">
-        <input type="text" id="city1">
+        <input type="text" id="city1" value="paris">
         <label for='city1'>Ville 1</label>
-        <input type="text" id="city2">
+        <input type="text" id="city2" value="london">
         <label for='city2'>Ville 2</label>
     </form>
+    <div id="map"></div>
 </body>
 </html>

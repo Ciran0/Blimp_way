@@ -14,7 +14,9 @@ def index():
 
 @app.route('/city/<depart>/<arrive>')
 def city(depart, arrive):
-    return depart+arrive
+    depart = api_request_code.get_coordinates(depart)
+    arrive = api_request_code.get_coordinates(arrive)
+    return api_request_code.get_points_between_coordinates(depart, arrive, 4)
 # main driver function
 
 
