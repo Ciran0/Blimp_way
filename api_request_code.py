@@ -26,16 +26,20 @@ def fetch_weather_data(latitude, longitude):
         return None
 
 def python_array_to_js_string(py_array):
-    js_array_string = "["
-    for i in range(len(py_array)):
-        if isinstance(py_array[i], str):
-            js_array_string += f'"{py_array[i]}"'
+    if isinstance(py_array, list):
+        js_array_string = "["
+        for i in range(len(py_array)):
+            js_array_string += python_array_to_js_string(py_array[i])
+            if i < len(py_array) - 1:
+                js_array_string += "; "
+        js_array_string += "]"
+        return js_array_string
+    else:
+        if isinstance(py_array, str):
+            return f'"{py_array}"'
         else:
-            js_array_string += str(py_array[i])
-        if i < len(py_array) - 1:
-            js_array_string += ", "
-    js_array_string += "]"
-    return js_array_string
+            return str(py_array)
+
 
 def get_points_between_coordinates(depart, arrive, n):
     if n < 2:
