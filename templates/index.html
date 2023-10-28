@@ -1,34 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Calculateur</title>
+<html>
+    <head>
+        <title>Blimps</title>
+        <meta charset="utf-8">
+         <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/index.css') }}">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="/cal">Calculateur</a>
+            </nav>
+            <h1>Les dirigeables</h1>
+        </header>
+        <main>
+            <table>
+                <caption>Tableau comparatif de la pollution engendré pour un déplacement de 100 Km en dirigeable comparé à d'autre moyen de transport</caption>
+                <thead>
+                    <tr>
+                        <td colspan="9">Dirigeable vs autre moyen de transport</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <td class="TabTitle">Voiture</td>
+                        <td class="TabTitle">Bus</td>
+                        <td class="TabTitle">Camion</td>
+                        <td class="TabTitle">Train</td>
+                        <td class="TabTitle" colspan="2">Avion</td>
+                        <td class="TabTitle" colspan="2">Bateau</td>
+                        <td class="TabTitle">Dirigeable</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <td>Personne</td>
+                        <td>Marchandise</td>
+                        <td>Personne</td>
+                        <td>Marchandise</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td class="Colum">Par personne/tonnes</td>
+                        <td>15,80 Kg Co2</td>
+                        <td>2,95 Kg Co2</td>
+                        <td>7,98 Kg Co2</td>
+                        <td>5,62 Kg Co2</td>
+                        <td>11,61 Kg Co2</td>
+                        <td>190 Kg Co2/t</td>
+                        <td>23,00 Kg Co2</td>
+                        <td>0,554 Kg C02/t</td>
+                        <td>1,21 Kg Co2</td>
+                    </tr>
+                    <tr>
+                        <td class="Colum">Moyenne nbre de pssagers</td>
+                        <td>1,5</td>
+                        <td>12,7</td>
+                        <th></th>
+                        <td>156</td>
+                        <td>88</td>
+                        <th></th>
+                        <td>12</td>
+                        <th></th>
+                        <td>88</td>
+                    </tr>
+                    <tr>
+                        <td class="Colum">Moyenne nbre de tonnes</td>
+                        <th></th>
+                        <th></th>
+                        <td>40</td>
+                        <th></th>
+                        <th></th>
+                        <td>100</td>
+                        <th></th>
+                        <td>1010</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td class="Colum">Pollution totale</td>
+                        <td>24 Kg Co2</td>
+                        <td>37 Kg Co2</td>
+                        <td>319 Kg Co2</td>
+                        <td>877 Kg Co2</td>
+                        <td>1022Kg Co2</td>
+                        <td>19000 KG Co2</td>
+                        <td>276 Kg Co2</td>
+                        <td>560 Kg Co2</td>
+                        <td>106 Kg Co2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
 
 
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-
-     <script type="module" src="{{ url_for('static',filename='rotatedMarker.js') }}"></script>
-
-
-    <script src='{{url_for('static', filename='index.js')}}'></script>
-    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/index.css') }}">
-</head>
-<body>
-    <button onclick="runPythonScript()">Calculer</button>
-    <a href="">reset</a>
-    <div id="output"></div>
-    <form id="form">
-        <input type="text" id="city1" value="paris">
-        <label for='city1'>Ville 1</label>
-        <input type="text" id="city2" value="london">
-        <label for='city2'>Ville 2</label>
-    </form>
-    <div id="map"></div>
-</body>
+    </body>
 </html>

@@ -12,6 +12,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/cal')
+def cal():
+    return render_template('index2.html')
+
+
 @app.route('/city/<depart>/<arrive>')
 def city(depart, arrive):
     depart = api_request_code.get_coordinates(depart)

@@ -1,1 +1,15 @@
-#map { height: 500px; width: 50%;}
+table{
+    border: 1px Black solid;
+    margin: 2px;
+    font-weight: normal;
+    text-align: center;
+}
+.Colum{
+    font-weight: bold;
+}
+.TabTitle{
+    font-weight: bold;
+}
+td{
+    border: 1px black solid;
+}

@@ -1,8 +1,9 @@
 import requests
 import json
-import math
+
 
 API_KEY = 'e623da52f797357b9c0e8cdc625d8eb3'
+
 
 def get_coordinates\
                 (city_name):
@@ -25,6 +26,7 @@ def fetch_weather_data(latitude, longitude):
     else:
         print(f"Failed to fetch data. Error code: {response.status_code}")
         return None
+
 
 def get_points_between_coordinates(depart, arrive, n):
     if n < 2:
