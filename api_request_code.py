@@ -26,13 +26,17 @@ def fetch_weather_data(latitude, longitude):
         print(f"Failed to fetch data. Error code: {response.status_code}")
         return None
 
-
 def get_points_between_coordinates(depart, arrive, n):
     if n < 2:
         raise ValueError("n must be at least 2.")
 
     lats = [depart[0]]
     lons = [depart[1]]
+
+    depart_wdata = fetch_weather_data(depart[0],depart[1])
+
+    speed = [depart_wdata["speed"]]
+    deg = [depart_wdata["deg"]]
 
     for i in range(1, n):
         f = float(i) / float(n)
@@ -41,7 +45,19 @@ def get_points_between_coordinates(depart, arrive, n):
         lats.append(lat)
         lons.append(lon)
 
-    return json.dumps(list(zip(lats, lons)))
+        step_wdata = fetch_weather_data(lat,lon)
+        speed.append(step_wdata["speed"])
+        deg.append(step_wdata["deg"])
+    
+    lats.append(arrive[0])
+    lons.append(arrive[1])
+
+    arrive_wdata = fetch_weather_data(arrive[0],arrive[1])
+
+    speed.append(arrive_wdata["speed"])
+    deg.append(arrive_wdata["deg"])
+
+    return json.dumps(list(zip(lats, lons, speed, deg)))
 
 # Example usage:
 
@@ -53,5 +69,7 @@ def get_points_between_coordinates(depart, arrive, n):
 #print(points)
 
 
-#print(fetch_weather_data(coords[0],coords[1]))
+#wdata = fetch_weather_data(depart[0],depart[1])
 
+#print(wdata["speed"])
+#print(wdata["deg"])
