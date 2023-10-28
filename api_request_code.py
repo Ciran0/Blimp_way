@@ -3,9 +3,6 @@ import json
 import math
 
 API_KEY = 'e623da52f797357b9c0e8cdc625d8eb3'
-lat = 1
-lon = 1
-
 
 def get_coordinates(city_name):
     url = f'http://api.openweathermap.org/geo/1.0/direct?q={city_name}&limit=1&appid={API_KEY}'
@@ -28,6 +25,18 @@ def fetch_weather_data(latitude, longitude):
         print(f"Failed to fetch data. Error code: {response.status_code}")
         return None
 
+def python_array_to_js_string(py_array):
+    js_array_string = "["
+    for i in range(len(py_array)):
+        if isinstance(py_array[i], str):
+            js_array_string += f'"{py_array[i]}"'
+        else:
+            js_array_string += str(py_array[i])
+        if i < len(py_array) - 1:
+            js_array_string += ", "
+    js_array_string += "]"
+    return js_array_string
+
 def get_points_between_coordinates(depart, arrive, n):
     if n < 2:
         raise ValueError("n must be at least 2.")
@@ -42,7 +51,7 @@ def get_points_between_coordinates(depart, arrive, n):
         lats.append(lat)
         lons.append(lon)
 
-    return list(zip(lats, lons))
+    return python_array_to_js_string(list(zip(lats, lons)))
 
 # Example usage:
 
